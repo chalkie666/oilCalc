@@ -99,8 +99,16 @@ RIcsdes              =  1.5255 # refractive index of coverslip in lens design, e
 WD                   =  (150.0+covSlipThickdes)  # lens working distance - lens dependent, look it up on the manufactuer website, eg http://microscope.olympus-global.com/uis2/en/plapon60xo/
 RIoildes             =  1.515  # refractive index of immersion oil used in lens design, as provided by manufacturer of the lens. Olympus oil for 60x1.42 is 1.515. 
 RIsamplereal         =  1.42   # real refractive index of the sample and/or mounting medium, eg water is 1.33, glycerol 1.47, 50% glycerol 1.42.
-covSlipThickreal     =  170.0  # real coverslip thickness, hopefully exactly 170 micrometers, might be something else.
+covSlipThickreal     =  175.0  # real coverslip thickness, hopefully exactly 170 micrometers, might be something else.
 RIcsreal             =  1.5255 # real refractive index of the coverslip glass, eg 1.52
+
+# sanity checks
+
+# the coverglass thickness cant be mroe than the working distance of the lens,
+# or else our optical path model is nonsense. 
+
+if covSlipThickreal > WD:
+	print "Whoops! Real coverslip thickness is larger than lens working distance: " + str(WD) + " so expect a nonsense result!!!" 
 
 # the equation to calculate the refractive index of the immersion oil 
 # to compensate for the spherical aberration caused by the sample.
