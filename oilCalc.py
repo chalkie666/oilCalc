@@ -92,14 +92,14 @@
 # distances in micrometers, refractive index is dimensionless
 
 RIoilneeded          =  0.00   # refractive index of immersion oil needed compensate for the sample: the goal!
-objDepth             =  0.00   # distance of object emitting light, from the coverslip / mounting media interface. 
+objDepth             =  5.00   # distance of object emitting light, from the coverslip / mounting media interface. 
 RIsampledes          =  1.5255 # refractive index of the sample and/or mounting medium, according to lens design, eg 1.52
 covSlipThickdes      =  170.0  # cover slip glass thickness by lens design, typically 170 micrometers
 RIcsdes              =  1.5255 # refractive index of coverslip in lens design, eg 1.52, 1.5255 plus minus 0.0015 at 541 nm, or 1.5230 at 589.3 nm, Abbe value, ve 55.from http://www.menzel.de/fileadmin/Templates/Menzel/pdf/en/Produktinfo_Deckglas_englisch_01.pdf
 WD                   =  (150.0+covSlipThickdes)  # lens working distance - lens dependent, look it up on the manufactuer website, eg http://microscope.olympus-global.com/uis2/en/plapon60xo/
 RIoildes             =  1.515  # refractive index of immersion oil used in lens design, as provided by manufacturer of the lens. Olympus oil for 60x1.42 is 1.515. 
-RIsamplereal         =  1.47   # real refractive index of the sample and/or mounting medium, eg water is 1.33, glycerol 1.47
-covSlipThickreal     =  130.0  # real coverslip thickness, hopefully exactly 170 micrometers, might be something else.
+RIsamplereal         =  1.42   # real refractive index of the sample and/or mounting medium, eg water is 1.33, glycerol 1.47, 50% glycerol 1.42.
+covSlipThickreal     =  170.0  # real coverslip thickness, hopefully exactly 170 micrometers, might be something else.
 RIcsreal             =  1.5255 # real refractive index of the coverslip glass, eg 1.52
 
 # the equation to calculate the refractive index of the immersion oil 
