@@ -29,7 +29,7 @@
 # refractive index, and then finally through a thickness of immersion oil of some 
 # refractive index. Oil layer thickness is calculated from working distance (WD)  of lens,
 # minus the cover glass thickness and object depth into the mounting medium, and we
-# assume its the same in both the designed and aberrated cases. Not sure thats right
+# assume its the same in both the designed and aberrated cases. Not sure that's right
 # and we also make no mention of numerical aperture of the lens, which is probably
 # an important detail. Or does it end up being the same due to trigonometry?
 # 
@@ -38,7 +38,7 @@
 # optical path in ideal designed scenario vs. real abberated situations. 
 # (optical path length is the distance the photon "feels" it went, 
 # which is just a clever way of saying the time it takes the photon to travel
-# dependent on the real distance and the regractive indices of the stuff photons go
+# dependent on the real distance and the refractive indices of the stuff photons go
 # through - that is to say the different speed of light in different media) 
 # We only consider photons travelling is a straight line from the object emitting
 # light to the lens front surface. 
@@ -85,7 +85,7 @@
 
 
 
-# here we set the values fopr all the physical variables descrbing the 
+# here we set the values for all the physical variables describing the 
 # optical setup the lens is designed for and the actual, real optical setup 
 # we need to compensate for using some refractive index immersion oil or other 
 
@@ -104,7 +104,7 @@ RIcsreal             =  1.5255 # real refractive index of the coverslip glass, e
 
 # sanity checks
 
-# the coverglass thickness cant be mroe than the working distance of the lens,
+# the coverglass thickness cant be more than the working distance of the lens,
 # or else our optical path model is nonsense. 
 
 if covSlipThickreal > WD:
