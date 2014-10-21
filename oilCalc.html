@@ -41,15 +41,19 @@
 		// the equation to calculate the refractive index of the immersion oil 
 		// to compensate for the spherical aberration caused by the sample.
 
-		
-		
+		// get the parameters from the user interface sliders and drop down list
 		workingDistance = parseFloat(document.getElementById("select-choice-lensWD").value);
 		covSlipThickreal = parseFloat(document.getElementById("slider-coverslipThickness").value);
 		rIsamplereal = parseFloat(document.getElementById("slider-SampleRI").value);
+		// use the working distance as the max possible object depth to prevent infinity weirdness
+		$("#slider-SampleDistance").attr("max", workingDistance);
+		//$('#slider-SampleDistance').slider('refresh');
 		objDepth = parseFloat(document.getElementById("slider-SampleDistance").value);
 		
+		// this is the equation to calculate the required refractive index oil
 		rIoilneeded = ( (objDepth*rIsampledes) + (covSlipThickdes*rIcsdes) + ((workingDistance-objDepth)*rIoildes) - (objDepth*rIsamplereal) - (covSlipThickreal*rIcsreal) ) / (workingDistance-objDepth+covSlipThickdes-covSlipThickreal);
 		//alert(rIoilneeded);
+		// write the result into the correct html element 
 		document.getElementById('CalculatedOilRI').innerHTML = rIoilneeded;
 		}
 	</script>
@@ -86,7 +90,7 @@
                 <input type="range" name="slider" id="slider-SampleRI" data-mini="true" value="1.40" min="1.20" max="2.00" step="0.01" />
 				
 				<label for="slider-SampleDistance">Depth of middle of sample; distance from coverslip in Microns:</label>
-                <input type="range" name="slider" id="slider-SampleDistance"  data-mini="true"value="0.0" min="0.0" max="500" step="0.1" />
+                <input type="range" name="slider" id="slider-SampleDistance"  data-mini="true" value="0.0" min="0.0" max="150.0" step="0.1" />
 			
 				<label for="slider-Temperature">Sample Temperature in degrees Celsius:</label>
                 <input type="range" name="slider" id="slider-Temperature" disabled="disabled" data-mini="true" value="23" min="4" max="50" step="1" />
