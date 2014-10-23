@@ -1,4 +1,99 @@
 <!doctype html>
+
+<!--
+
+#****************************************************************************
+#*                                                                          *
+#*                         immersion oil calculator webapp v0.2             *
+#*                                                                          *
+#*                         Copyright 2014 chalkie666 on GitHub              *
+#*                                                                          *				
+#****************************************************************************
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# this jquery mobile webapp attempts to calculate the refractive index of immersion oil needed 
+# to correct out spherical aberrations caused by the 
+# early or late arrival (compared to the design specification of an objective lens) 
+# of photons going in a straight line from an object a few microns deep embedded in 
+# mounting media of known refractive index, under a coverslip of known thickness and
+# refractive index, and then finally through a thickness of immersion oil of some 
+# refractive index. Oil layer thickness is calculated from working distance (WD) of the lens,
+# minus the object depth into the mounting medium 
+# and in the aberrated case also + design coverslip thickness - real coverslip thickness, 
+# This model might not be correct....
+# and we also make no mention of numerical aperture of the lens, which is probably
+# an important detail. Or does it end up being the same due to trigonometry?
+# 
+# Rather than using fancy physics with wavefronts and complex equations to work this out, we take a
+# simple approach of assuming the spherical aberration is caused by the difference in 
+# optical path in ideal designed scenario vs. real abberated situations. 
+# (optical path length is the distance the photon "feels" it went, 
+# which is just a clever way of saying the time it takes the photon to travel
+# dependent on the real distance and the refractive indices of the stuff photons go
+# through - that is to say the different speed of light in different media) 
+# We only consider photons travelling in a straight line from the object emitting
+# light to the lens front surface. 
+# So far we make no calculations about photons going in other directions, 
+# which is perhaps required. So this might all be totally wrong!!! 
+# But it seems to give reasonable results perhaps....
+
+# equations 
+
+# speed in medium = c/n = speed of light / refractive index
+# time = distance . n / c
+
+# model:
+# time taken for photons to get from sample to lens surface should be the same
+# for the reference design of a lens (design spec of coverglass and immersion oil, 
+# and sample refractive index)
+# AND for some other case with different sample refractive index and/or coverslip 
+# and or refractive index immersion oil. 
+
+# simple algebra then tells us the right immersion oil refractive index to use 
+# in order to correct a wrong refractive index sample with object at a certain depth
+# and some wrong cover glass thickness.
+
+# time designed = timewrongsample
+
+# time = timeinsample + time in cover glass + time in immersion oil
+
+# timeinsample = objectDepthFromCoverslip . sampleRefractiveIndex / c
+# times for other layers are calculated the same way: distance.RI/c
+
+# so
+# timeDesign = objDepth.RIsampledes + covSlipThickdes.RIcsdes + (WD-objDepth).RIoildes
+#             ----------------------------------------------------------------------------------------
+#                                                          c
+
+# likewise
+# timeWrongSample = objDepth.RIsamplereal + covSlipThickreal.RIcsreal + (WD-objDepth+covSlipThickdes-covSlipThickreal).RIoilneeded
+#                   -----------------------------------------------------------------------------------------------
+#                                                         c
+# multiply out by c, eliminates c, then rearranging to isolate RIoilneeded:
+
+#                 objDepth.RIsampledes + covSlipThickdes.RIcsdes + (WD-objDepth).RIoildes - objDepth.RIsamplereal - covSlipThickreal.RIcsreal
+# RIoilneeded  =    -----------------------------------------------------------------------------------------------------------------------------------------
+#								(WD-objDepth+covSlipThickdes-covSlipThickreal)
+
+
+
+# here we set the values for all the physical variables describing the 
+# optical setup the lens is designed for and the actual, real optical setup 
+# we need to compensate for using some refractive index immersion oil or other
+-->
+
 <html>
 <head>
     <title>Imm Oil R.I. Calc</title>
