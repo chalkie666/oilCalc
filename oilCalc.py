@@ -2,9 +2,9 @@
 
 #****************************************************************************
 #*                                                                          *
-#*                         immersion oil calculator v0.2                    *
+#*                         immersion oil calculator webapp v0.2             *
 #*                                                                          *
-#*                         Copyright 2014 Dan White                         *
+#*                         Copyright 2014 chalkie666 on GitHub              *
 #*                                                                          *				
 #****************************************************************************
 
@@ -21,29 +21,31 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# this script attempt to calculate the refractive index of immersion oil needed 
+# this python script prototype attempts to calculate the refractive index of immersion oil needed 
 # to correct out spherical aberrations caused by the 
 # early or late arrival (compared to the design specification of an objective lens) 
 # of photons going in a straight line from an object a few microns deep embedded in 
 # mounting media of known refractive index, under a coverslip of known thickness and
 # refractive index, and then finally through a thickness of immersion oil of some 
-# refractive index. Oil layer thickness is calculated from working distance (WD)  of lens,
-# minus the cover glass thickness and object depth into the mounting medium, and we
-# assume its the same in both the designed and aberrated cases. Not sure that's right
+# refractive index. Oil layer thickness is calculated from working distance (WD) of the lens,
+# minus the object depth into the mounting medium 
+# and in the aberrated case also + design coverslip thickness - real coverslip thickness, 
+# This model might not be correct....
 # and we also make no mention of numerical aperture of the lens, which is probably
 # an important detail. Or does it end up being the same due to trigonometry?
 # 
-# Rather than using fancy physics and complex equations to work this out, we take a
+# Rather than using fancy physics with wavefronts and complex equations to work this out, we take a
 # simple approach of assuming the spherical aberration is caused by the difference in 
 # optical path in ideal designed scenario vs. real abberated situations. 
 # (optical path length is the distance the photon "feels" it went, 
 # which is just a clever way of saying the time it takes the photon to travel
 # dependent on the real distance and the refractive indices of the stuff photons go
 # through - that is to say the different speed of light in different media) 
-# We only consider photons travelling is a straight line from the object emitting
+# We only consider photons travelling in a straight line from the object emitting
 # light to the lens front surface. 
 # So far we make no calculations about photons going in other directions, 
 # which is perhaps required. So this might all be totally wrong!!! 
+# But it seems to give reasonable results perhaps....
 
 # equations 
 
