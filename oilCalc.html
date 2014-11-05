@@ -170,7 +170,7 @@ along with equation for calculating n vs wavelength.
 			<form>
 				
 				<label for="select-choice-lensWD" class="select"> 
-					<a href="#popupObjLens" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Help?</a>
+					<a href="#popupObjLens" data-role="button" data-icon="info" data-iconpos="notext" data-rel="popup" data-transition="pop" data-inline="true" data-theme="b">Info</a>
 					Objective lens:
 				</label>
 					<div data-role="popup" id="popupObjLens">
@@ -183,17 +183,17 @@ along with equation for calculating n vs wavelength.
 				</select>
 			
 			    <label for="slider-coverslipThickness">
-			    	<a href="#popupcoverslipThickness" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Help?</a>
+			    	<a href="#popupcoverslipThickness" data-role="button" data-icon="info" data-iconpos="notext" data-rel="popup" data-transition="pop" data-inline="true" data-theme="b">Info</a>
 					Coverslip or Sample Support Thickness in Microns:
 				</label>
 					<div data-role="popup" id="popupcoverslipThickness">
-						<p>Thickenss, in microns, of the coverslip or sample support,
+						<p>Thickness, in microns, of the coverslip or sample support,
 						 assuming it is glass of refractive index 1.5255 at 541 nm.</p>
 					</div>
                 <input type="range" name="slider" id="slider-coverslipThickness" value="170" min="0" max="3000" step="1" data-show-value="true" data-popup-enabled="true" data-mini="true"/>
 				
 				<label for="slider-SampleRI">
-					<a href="#popupSampleRI" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Help?</a>
+					<a href="#popupSampleRI" data-role="button" data-icon="info" data-iconpos="notext" data-rel="popup" data-transition="pop" data-inline="true" data-theme="b">Info</a>
 					Sample / Mountant Refractive Index:
 				</label>
 					<div data-role="popup" id="popupSampleRI">
@@ -204,8 +204,14 @@ along with equation for calculating n vs wavelength.
 					</div>
                 <input type="range" name="slider" id="slider-SampleRI" data-mini="true" value="1.40" min="1.20" max="2.00" step="0.01" />
 				
-				<label for="slider-SampleDistance">Depth of middle of sample; distance from coverslip in Microns:</label>
-                <input type="range" name="slider" id="slider-SampleDistance"  data-mini="true" value="0.0" min="0.0" max="150.0" step="0.1" />
+				<label for="slider-SampleDistance">
+					<a href="#popupSampleDistance" data-role="button" data-icon="info" data-iconpos="notext" data-rel="popup" data-transition="pop" data-inline="true" data-theme="b">Info</a>
+					Depth to middle of sample from coverslip:
+				</label>	
+					<div data-role="popup" id="popupSampleDistance">
+						<p>How deep into the sample, in microns, lies the middle of the object of interest from the surface of the coverglass.</p>
+					</div>
+				<input type="range" name="slider" id="slider-SampleDistance"  data-mini="true" value="0.0" min="0.0" max="150.0" step="0.1" />
 			
 				<label for="slider-Temperature">Sample Temperature in degrees Celsius:</label>
                 <input type="range" name="slider" id="slider-Temperature" disabled="disabled" data-mini="true" value="23" min="4" max="50" step="1" />
