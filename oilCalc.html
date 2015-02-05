@@ -139,7 +139,7 @@ along with equation for calculating n vs wavelength.
 		// to compensate for the spherical aberration caused by the sample.
 
 		// get the parameters from the user interface sliders and drop down list
-		workingDistance = parseFloat(document.getElementById("select-choice-lensWD").value);
+		workingDistance = parseFloat(document.getElementById("slider-choice-lensWD").value);
 		covSlipThickreal = parseFloat(document.getElementById("slider-coverslipThickness").value);
 		rIsamplereal = parseFloat(document.getElementById("slider-SampleRI").value);
 		// use the working distance as the max possible object depth to prevent infinity weirdness
@@ -169,26 +169,31 @@ along with equation for calculating n vs wavelength.
            
 			<form>
 				
-				<label for="select-choice-lensWD" class="select"> 
+				<label for="slider-choice-lensWD"> 
 					<a href="#popupObjLens" data-role="button" data-icon="info" data-iconpos="notext" data-rel="popup" data-transition="pop" data-inline="true" data-theme="b">Info</a>
 					Working Distance of oil immersion lens (&#x3BC;m):
 				</label>
 					<div data-role="popup" id="popupObjLens">
-						<p>Select oil immersion lens working distance (&#x3BC;m)</p>
+						<p>Select oil immersion lens working distance (&#x3BC;m), eg.
+						40x/1.3 UPLFLN 40XO (200 &#x3BC;m), 
+						60x/1.42 PLAPON 60XO (150 &#x3BC;m), 
+						100x/1.4 UPLSAPO 100XO (130 &#x3BC;m).
+						</p>
 					</div>
-				<select name="select-choice-lensWD" id="select-choice-lensWD" data-inline="true" data-mini="true">
+				<!-- <select name="select-choice-lensWD" id="select-choice-lensWD" data-inline="true" data-mini="true">
 					<option value="CustomOption">Custom Working Distance; other lenses (&#x3BC;m)</option>
 					<option value="200.0">40x/1.3 UPLFLN 40XO (200 &#x3BC;m)</option>
 					<option selected="selected" value="150.0">60x/1.42 PLAPON 60XO (150 &#x3BC;m)</option>
 					<option value="130.0">100x/1.4 UPLSAPO 100XO (130 &#x3BC;m)</option>
-				</select>
+				</select> -->
+				<input type="range" name="slider" id="slider-choice-lensWD" value="150" min="1" max="1000" step="1" data-show-value="true" data-popup-enabled="true" data-mini="true"/>
 			
 			    <label for="slider-coverslipThickness">
 			    	<a href="#popupcoverslipThickness" data-role="button" data-icon="info" data-iconpos="notext" data-rel="popup" data-transition="pop" data-inline="true" data-theme="b">Info</a>
-					Coverslip Thickness in Microns:
+					Coverslip Thickness in &#x3BC;m
 				</label>
 					<div data-role="popup" id="popupcoverslipThickness">
-						<p>Thickness, in microns, of the coverslip or sample support,
+						<p>Thickness, in &#x3BC;m, of the coverslip or sample support,
 						 assuming it is glass of refractive index 1.5255 at 541 nm.</p>
 					</div>
                 <input type="range" name="slider" id="slider-coverslipThickness" value="170" min="0" max="3000" step="1" data-show-value="true" data-popup-enabled="true" data-mini="true"/>
