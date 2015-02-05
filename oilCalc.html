@@ -114,7 +114,7 @@ along with equation for calculating n vs wavelength.
 
 		// distances in micrometers, refractive index is dimensionless
 
-		var rIoilneeded          =  1.5;    // refractive index of immersion oil needed compensate for the sample: the goal!
+		var rIoilneeded          =  1.516;    // refractive index of immersion oil needed compensate for the sample: the goal!
 		var objDepth             =  5.00;   // distance of object emitting light, from the coverslip / mounting media interface. 
 		var rIsampledes          =  1.5255; // refractive index of the sample and/or mounting medium, according to lens design, eg 1.52
 		var covSlipThickdes      =  170.0;  // cover slip glass thickness by lens design, typically 170 micrometers
@@ -150,6 +150,8 @@ along with equation for calculating n vs wavelength.
 		// this is the equation to calculate the required refractive index oil
 		rIoilneeded = ( (objDepth*rIsampledes) + (covSlipThickdes*rIcsdes) + ((workingDistance-objDepth)*rIoildes) - (objDepth*rIsamplereal) - (covSlipThickreal*rIcsreal) ) / (workingDistance-objDepth+covSlipThickdes-covSlipThickreal);
 		//alert(rIoilneeded);
+		//round to 4 decimal places.
+		rIoilneeded = rIoilneeded.toFixed(4);
 		// write the result into the correct html element 
 		document.getElementById('CalculatedOilRI').innerHTML = rIoilneeded;
 		}
@@ -218,7 +220,7 @@ along with equation for calculating n vs wavelength.
 					<div data-role="popup" id="popupSampleDistance">
 						<p>How deep into the sample, in &#x3BC;m, lies the middle of the object of interest from the surface of the coverglass.</p>
 					</div>
-				<input type="range" name="slider" id="slider-SampleDistance"  data-mini="true" value="0.0" min="0.0" max="150.0" step="0.1" />
+				<input type="range" name="slider" id="slider-SampleDistance"  data-mini="true" value="1.0" min="0.1" max="150.0" step="0.1" />
 				<!-- Finish sample distance from coverslip selection-->
 			
 				<!-- Not implemented yet
